@@ -1,5 +1,7 @@
+
 const express = require("express");
 const path = require("path");
+const db = require("./config/db");
 
 const app = express();
 
@@ -16,7 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get("/", (req, res) => {
-    res.render("home.ejs");
+    res.render("home");
 });
 
 app.listen(PORT, () => {
