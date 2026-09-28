@@ -12,8 +12,6 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 
- 
-
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     seller_id INT NOT NULL,

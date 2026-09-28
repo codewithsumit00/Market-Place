@@ -1,26 +1,28 @@
-
 const express = require("express");
 const path = require("path");
+require("dotenv").config();
+
+// Database connection
 const db = require("./config/db");
 
-const app = express();
+// Home routes
+const homeRoutes = require("./routes/homeRoutes");
 
-const PORT = 8080;
+const app = express();
+const PORT = process.env.PORT || 8080;
 
 // EJS setup
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-//public folder 
+// Middleware
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
+// Routes
+app.use("/", homeRoutes);
 
-
-
-app.get("/", (req, res) => {
-    res.render("home");
-});
-
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
